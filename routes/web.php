@@ -1,17 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     // return view('Layouts.AdminApp');
-//     // return view('Layouts/AdminApp');
-// });
 
-// Route::get('/admin/brand', function () {
-//     return view('demo');
-//     // return view('Layouts/AdminApp');
-// });
-
-
-Route::get('/',[HomeController::class,'index']);
+Route::get('/',[AuthController::class,'Login']);
+Route::post('/new/user/register',[AuthController::class,'SaveUser']);
