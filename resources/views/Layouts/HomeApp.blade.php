@@ -7,12 +7,13 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 	<title>Winku Social Network Toolkit</title>
-    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
+    <link rel="icon" href="{{asset('HomeAsset/images/fav.png')}}" type="image/png" sizes="16x16"> 
     
-    <link rel="stylesheet" href="HomeAsset/css/main.min.css">
-    <link rel="stylesheet" href="HomeAsset/css/style.css">
-    <link rel="stylesheet" href="HomeAsset/css/color.css">
-    <link rel="stylesheet" href="HomeAsset/css/responsive.css">
+    <link rel="stylesheet" href="{{asset('HomeAsset/css/main.min.css')}}">
+    <link rel="stylesheet" href="{{asset('HomeAsset/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('HomeAsset/css/color.css')}}">
+    <link rel="stylesheet" href="{{asset('HomeAsset/css/responsive.css')}}">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -217,7 +218,7 @@
 				<li>
 					<a href="#" title="">Home</a>
 					<ul>
-						<li><a href="index-2.html" title="">Home Social</a></li>
+						<li><a href="/logout" title="">Home Social</a></li>
 						<li><a href="index2.html" title="">Home Social 2</a></li>
 						<li><a href="index-company.html" title="">Home Company</a></li>
 						<li><a href="landing.html" title="">Login page</a></li>
@@ -428,7 +429,7 @@
 					<a href="#" title=""><i class="ti-pencil-alt"></i>edit profile</a>
 					<a href="#" title=""><i class="ti-target"></i>activity log</a>
 					<a href="#" title=""><i class="ti-settings"></i>account setting</a>
-					<a href="#" title=""><i class="ti-power-off"></i>log out</a>
+					<a href="/logout"><i class="ti-power-off"></i>log out</a>
 				</div>
 			</div>
 			<span class="ti-menu main-menu" data-ripple=""></span>
@@ -590,9 +591,10 @@
 			</form>
 		</div><!-- side panel -->		
 	
-	<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.min.js"></script>
-	<script src="HomeAsset/js/script.js"></script>
-	<script src="HomeAsset/js/map-init.js"></script>
+	{{-- <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.min.js"></script> --}}
+	<script src="{{ asset('HomeAsset/js/main.min.js') }}"></script>
+	<script src="{{asset('HomeAsset/js/script.js')}}"></script>
+	<script src="{{asset('HomeAsset/js/map-init.js')}}"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
 
 </body>	
