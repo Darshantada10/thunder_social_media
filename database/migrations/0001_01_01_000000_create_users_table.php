@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('dob')->nullable();
             $table->enum('gender',['male','female','others'])->default('male');
             $table->string('password');
+            $table->enum('status',['blocked','regular'])->default('regular');
             $table->rememberToken();
             $table->timestamps();
         });
