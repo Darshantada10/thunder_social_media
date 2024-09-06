@@ -46,26 +46,27 @@
                                 Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a
                                     href="#" title="">Join now</a>
                             </p>
-                            <form method="post">
+                            <form method="post" action="{{route('authenticate.user')}}">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="text" id="input" required="required" />
-                                    <label class="control-label" for="input">Username</label><i
+                                    <input type="text" id="username" name="username" required />
+                                    <label class="control-label"  for="username">Username / Email</label><i
                                         class="mtrl-select"></i>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" required="required" />
-                                    <label class="control-label" for="input">Password</label><i
+                                    <input type="password" id="password" name="password" required />
+                                    <label class="control-label" for="password">Password</label><i
                                         class="mtrl-select"></i>
                                 </div>
-                                <div class="checkbox">
+                                {{-- <div class="checkbox">
                                     <label>
                                         <input type="checkbox" checked="checked" /><i class="check-box"></i>Always
                                         Remember Me.
                                     </label>
-                                </div>
-                                <a href="#" title="" class="forgot-pwd">Forgot Password?</a>
+                                </div> --}}
+                                {{-- <a href="#" title="" class="forgot-pwd">Forgot Password?</a> --}}
                                 <div class="submit-btns">
-                                    <button class="mtr-btn signin" type="button"><span>Login</span></button>
+                                    <button class="mtr-btn" type="submit"><span>Login</span></button>
                                     <button class="mtr-btn signup" type="button"><span>Register</span></button>
                                 </div>
                             </form>
