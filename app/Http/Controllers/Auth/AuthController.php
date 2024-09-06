@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -35,5 +37,45 @@ class AuthController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function AuthUser(Request $request)
+    {
+
+        $field = filter_var($request->input('username'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        $credentials = [
+            $field => $request->input('username'),
+            'password' => $request->input('password')
+        ];
+
+        if(Auth::attempt($credentials))
+        {
+            if(Auth::user()->status == 'regular')
+            {
+                return redirect('/home');
+                // dd("Welcome");
+            }
+            else if(Auth::user()->status == 'blocked')
+            {
+                dd("sorry, but you're blocked");
+            }
+            else
+            {
+                return redirect('/');
+            }
+            // dd("true");
+        }
+        else
+        {
+            dd("false");
+        }
+    }
+
+    public function Logout()
+    {
+        Session::flush();
+        Auth::logout();
+        return redirect ('/');
     }
 }
