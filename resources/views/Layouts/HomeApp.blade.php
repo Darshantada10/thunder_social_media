@@ -207,24 +207,27 @@
 			</div>
 		</nav>
 	</div><!-- responsive header -->
-	
+	{{-- {{dd($logo->logo)}} --}}
 	<div class="topbar stick">
 		<div class="logo">
-			<a title="" href="newsfeed.html"><img src="images/logo.png" alt=""></a>
+			<a title="" href="/home">
+				<img src="/storage/{{$logo->logo}}" alt="">
+				{{-- <img src="{{asset('HomeAsset/images/logo.png')}}" alt=""> --}}
+			</a>
 		</div>
 		
 		<div class="top-area">
 			<ul class="main-menu">
 				<li>
-					<a href="#" title="">Home</a>
-					<ul>
+					<a href="/home" title="">Home</a>
+					{{-- <ul>
 						<li><a href="/logout" title="">Home Social</a></li>
 						<li><a href="index2.html" title="">Home Social 2</a></li>
 						<li><a href="index-company.html" title="">Home Company</a></li>
 						<li><a href="landing.html" title="">Login page</a></li>
 						<li><a href="logout.html" title="">Logout Page</a></li>
 						<li><a href="newsfeed.html" title="">news feed</a></li>
-					</ul>
+					</ul> --}}
 				</li>
 				<li>
 					<a href="#" title="">timeline</a>
@@ -409,14 +412,6 @@
 						<a href="messages.html" title="" class="more-mesg">view more</a>
 					</div>
 				</li>
-				<li><a href="#" title="Languages" data-ripple=""><i class="fa fa-globe"></i></a>
-					<div class="dropdowns languages">
-						<a href="#" title=""><i class="ti-check"></i>English</a>
-						<a href="#" title="">Arabic</a>
-						<a href="#" title="">Dutch</a>
-						<a href="#" title="">French</a>
-					</div>
-				</li>
 			</ul>
 			<div class="user-img">
 				<img src="images/resources/admin.jpg" alt="">
@@ -432,7 +427,7 @@
 					<a href="/logout"><i class="ti-power-off"></i>log out</a>
 				</div>
 			</div>
-			<span class="ti-menu main-menu" data-ripple=""></span>
+			{{-- <span class="ti-menu main-menu" data-ripple=""></span> --}}
 		</div>
 	</div><!-- topbar -->
 
