@@ -4723,7 +4723,7 @@ canvas {
 }
 
 .top-area > ul.main-menu > li::after {
-    content: "";
+    /* content: ""; */
     font-family: fontawesome;
     font-size: 13px;
     position: absolute;
