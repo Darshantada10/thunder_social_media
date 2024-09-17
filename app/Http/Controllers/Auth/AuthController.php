@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\WelcomeMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
@@ -27,6 +29,9 @@ class AuthController extends Controller
         // $user->gender = $request->gender;
         // $user->save();
 
+        $email = $request->email;
+        $username = $request->username;
+        
         User::create([
             'name' => $request->name,
             'username' => $request->username,
@@ -35,6 +40,8 @@ class AuthController extends Controller
             'dob' => $request->dob,
             'gender' => $request->gender,
         ]);
+
+        Mail::to($email)->send(new WelcomeMail($username));
 
         return redirect('/');
     }
