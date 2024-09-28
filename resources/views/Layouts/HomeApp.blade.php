@@ -246,6 +246,7 @@
 			@endforeach
 
 	</ul>
+		<span>welcome, {{$userdata->username}}</span>
 			<ul class="setting-area">
 				<li>
 					<a href="#" title="Home" data-ripple=""><i class="ti-search"></i></a>
@@ -389,7 +390,7 @@
 				</li>
 			</ul>
 			<div class="user-img">
-				<img src="images/resources/admin.jpg" alt="">
+				<img src="{{asset('profile_picture/'.$userdata->profile_picture)}}" alt="" style="height: 30px; width:30px;">
 				<span class="status f-online"></span>
 				<div class="user-setting">
 					<a href="#" title=""><span class="status f-online"></span>online</a>
@@ -406,10 +407,68 @@
 		</div>
 	</div><!-- topbar -->
 
+	<section>
+		<div class="gap gray-bg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row" id="page-contents">
 
+							@include('Layouts.Components.LeftSidebar')
 
-    @yield('Content')
+							<div class="col-lg-6">
+								<div class="central-meta">
+									<div class="new-postbox">
+										<figure>
+											<img src="{{asset('profile_picture/'.$userdata->profile_picture)}}" alt="">
+										</figure>
+										<div class="newpst-input">
+											<form method="post" action="{{route('add.post')}}">
+												@csrf
 
+												<textarea rows="2" placeholder="write something" name="caption" id="music"></textarea>
+												<div class="attachments">
+													<ul>
+														<li>
+															<i class="fa fa-music"></i>
+															<label class="fileContainer">
+																<input type="file" name="music" id="music">
+															</label>
+														</li>
+														<li>
+															<i class="fa fa-image"></i>
+															<label class="fileContainer">
+																<input type="file" name="image" id="image">
+															</label>
+														</li>
+														<li>
+															<i class="fa fa-video-camera"></i>
+															<label class="fileContainer">
+																<input type="file" name="video" id="video">
+															</label>
+														</li>
+														<li>
+															<button type="submit">Post</button>
+														</li>
+													</ul>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+
+    						@yield('Content')
+
+							</div>
+
+							@include('Layouts.Components.RightSidebar')
+
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
 
 
     <footer>
