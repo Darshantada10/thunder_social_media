@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CheckController;
 use App\Http\Controllers\FrontEnd\HomeController;
+use App\Http\Controllers\FrontEnd\PostController;
 use App\Http\Controllers\FrontEnd\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,13 +14,15 @@ Route::post('/new/user/register',[AuthController::class,'SaveUser']);
 Route::get('/logout',[AuthController::class,'Logout']);
 
 
-// Route::get('/home',[HomeController::class,'Index'])->middleware('auth');
+Route::get('/non-authorized',[CheckController::class,'Index']);
 
 
-Route::middleware(['auth'])->group(function ()
+Route::middleware(['auth','usercheck'])->group(function ()
 {
 
     Route::get('/home',[HomeController::class,'Index']);
+
+    Route::post('/home',[PostController::class,'Index'])->name('add.post');
 
     Route::get('/my-account',[ProfileController::class,'Index']);
     Route::post('/my-account',[ProfileController::class,'Update'])->name('update.profile-information');
