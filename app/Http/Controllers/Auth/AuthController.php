@@ -41,7 +41,7 @@ class AuthController extends Controller
             'gender' => $request->gender,
         ]);
 
-        Mail::to($email)->send(new WelcomeMail($username));
+        // Mail::to($email)->send(new WelcomeMail($username));
 
         return redirect('/');
     }
