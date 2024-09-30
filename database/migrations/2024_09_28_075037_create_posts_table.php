@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('video')->nullable();
             $table->string('music')->nullable();
             
+            $table->softDeletes();
+            
             $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
 
             $table->timestamps();
