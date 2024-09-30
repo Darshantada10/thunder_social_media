@@ -416,14 +416,25 @@
 
 							@include('Layouts.Components.LeftSidebar')
 
+
+						
+
+
 							<div class="col-lg-6">
+
+								@if ($errors->has('media'))
+								<div class="alert alert-danger">
+									{{$errors->first('media')}}
+								</div>
+								@endif
+								
 								<div class="central-meta">
 									<div class="new-postbox">
 										<figure>
 											<img src="{{asset('profile_picture/'.$userdata->profile_picture)}}" alt="">
 										</figure>
 										<div class="newpst-input">
-											<form method="post" action="{{route('add.post')}}">
+											<form method="post" action="{{route('add.post')}}" enctype="multipart/form-data">
 												@csrf
 
 												<textarea rows="2" placeholder="write something" name="caption" id="music"></textarea>
