@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Like;
 
 class PostController extends Controller
 {
@@ -57,6 +58,31 @@ class PostController extends Controller
         $post->save();
 
         return redirect('/home');
+
+    }
+
+    public function SaveLike(Request $request)
+    {
+        $data = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'post_id' => 'required|exists:posts,id',
+        ]);
+
+        $existinglike  = Like::where('user_id',$request->user_id)->where('post_id',$request->post_id)->first();
+
+        if(!$existinglike)
+        {
+            Like::create([
+                'user_id' => $request->user_id,
+                'post_id' => $request->post_id,
+            ]);
+            return response()->json(['message'=>'Like']);
+        }
+        else
+        {
+            $existinglike->delete();
+            return response()->json(['message'=>'Unlike']);
+        }
 
     }
 }
