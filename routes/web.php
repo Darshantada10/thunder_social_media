@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CheckController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\FrontEnd\PostController;
 use App\Http\Controllers\FrontEnd\ProfileController;
-use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[AuthController::class,'Login'])->middleware('guest')->name('login');
@@ -16,6 +17,12 @@ Route::get('/logout',[AuthController::class,'Logout']);
 
 Route::get('/non-authorized',[CheckController::class,'Index']);
 
+
+Route::get('/clear-commands',function(){
+
+    // Artisan::command('clear:config');
+
+});
 
 Route::middleware(['auth','usercheck'])->group(function ()
 {
