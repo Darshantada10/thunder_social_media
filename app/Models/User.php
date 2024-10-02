@@ -31,6 +31,10 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
         // this class(user) has many post
     }
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
