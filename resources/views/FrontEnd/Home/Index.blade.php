@@ -15,7 +15,7 @@
                     </figure>
                     <div class="friend-name">
                         <ins><a href="time-line.html" title="">{{$post->user->username}}</a></ins>
-                        <span>published: june,2 2018 19:PM</span>
+                        <span>published: {{$post->created_at->format('F ,j Y g:i:A')}}</span>
                     </div>
                     <div class="post-meta">
                         <img src="{{asset($post->image)}}" alt="No Image Found">
@@ -27,6 +27,7 @@
                                         <ins>1.2k</ins>
                                     </span>
                                 </li>
+                              
                                 <li>
                                     <span class="comment" data-toggle="tooltip" title="Comments">
                                         <i class="fa fa-comments-o"></i>
@@ -34,11 +35,66 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <span class="like" data-toggle="tooltip" title="like">
+                                    <span class="like" data-toggle="tooltip" title="like" data-user-id="{{$userdata->id}}"  data-post-id="{{$post->id}}" onclick="like(this)">
                                         <i class="ti-heart"></i>
                                         <ins>2.2k</ins>
                                     </span>
                                 </li>
+                                <script>
+                                    function like(element)
+                                    {
+                                        // console.log("inside function");
+                                        // alert('likes button clicked');
+                                        
+                                        // var - redeclare and re assign
+                                        // var name = admin
+                                        // name = darshan - re assign
+                                        // var name = thunder - re declare
+
+
+                                        // let - re assign only
+                                        // let name = admin - assign
+                                        // name = thunder  - re assign
+                                        // let name = thunder  - not possible re declaration
+
+                                        // const - nothing - only declaration
+                                        // const name = darshan
+
+                                        // console.log(element);
+                                        
+                                        var userid = element.getAttribute('data-user-id');
+                                        var postid = element.getAttribute('data-post-id');
+                                        // console.log(userid,postid);
+
+                                        if(!userid || !postid)
+                                        {
+                                            console.error("user id or post id not available");
+                                            return;
+                                        }
+
+                                        $.ajax({
+                                            url:'/save-like',
+                                            method:"post",
+                                            data : {
+                                                    _token : '{{csrf_token()}}',
+                                                    user_id : userid, 
+                                                    post_id : postid
+                                                },
+                                                success:function(response) 
+                                                {
+                                                    console.log("like added successfully",response);
+                                                    
+                                                },
+                                                error: function(xhr,status,error)
+                                                {
+                                                    console.error("something went wrong",error); 
+                                                }
+                                        });
+                                        
+                                    }
+
+
+                                </script>
                                 <li>
                                     <span class="dislike" data-toggle="tooltip" title="dislike">
                                         <i class="ti-heart-broken"></i>
