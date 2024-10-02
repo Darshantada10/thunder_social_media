@@ -30,6 +30,7 @@ Route::middleware(['auth','usercheck'])->group(function ()
     Route::get('/home',[HomeController::class,'Index']);
 
     Route::post('/home',[PostController::class,'Index'])->name('add.post');
+    Route::post('/save-like',[PostController::class,'SaveLike'])->name('add.like');
 
     Route::get('/my-account',[ProfileController::class,'Index']);
     Route::post('/my-account',[ProfileController::class,'Update'])->name('update.profile-information');
