@@ -19,28 +19,31 @@ class PostController extends Controller
         
         if($request->hasFile('image'))
         {
+            $path = 'uploads/image/';
             $image = $request->file('image');
             $extension = $image->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
-            $image->move('image/',$filename);
+            $filename = $path.time().'.'.$extension;
+            $image->move($path,$filename);
             $image = $filename;
         }
     
         if($request->hasFile('video'))
         {
+            $path = 'uploads/video/';
             $video = $request->file('video');
             $extension = $video->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
-            $video->move('video/',$filename);
+            $filename = $path.time().'.'.$extension;
+            $video->move($path,$filename);
             $video = $filename;
         }
         
         if($request->hasFile('music'))
         {
+            $path = 'uploads/music/';
             $music = $request->file('music');
             $extension = $music->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
-            $music->move('music/',$filename);
+            $filename = $path.time().'.'.$extension;
+            $music->move($path,$filename);
             $music = $filename;
         }
 
