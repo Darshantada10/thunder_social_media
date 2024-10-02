@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{asset('HomeAsset/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('HomeAsset/css/color.css')}}">
     <link rel="stylesheet" href="{{asset('HomeAsset/css/responsive.css')}}">
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -632,10 +632,10 @@
 		</div><!-- side panel -->		
 	
 	{{-- <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.min.js"></script> --}}
-	<script src="{{ asset('HomeAsset/js/main.min.js') }}"></script>
-	<script src="{{asset('HomeAsset/js/script.js')}}"></script>
-	<script src="{{asset('HomeAsset/js/map-init.js')}}"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
+	<script defer src="{{ asset('HomeAsset/js/main.min.js') }}"></script>
+	<script defer src="{{asset('HomeAsset/js/script.js')}}"></script>
+	<script defer src="{{asset('HomeAsset/js/map-init.js')}}"></script>
+	{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script> --}}
 
 </body>	
 
