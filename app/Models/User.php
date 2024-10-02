@@ -22,6 +22,7 @@ class User extends Authenticatable
         'dob',
         'gender',
         'email',
+        'profile_picture',
         'password',
     ];
 
