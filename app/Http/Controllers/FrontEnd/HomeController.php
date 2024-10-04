@@ -21,7 +21,8 @@ class HomeController extends Controller
         $logo = Logo::where('status','=','1')->orderBy('id','desc')->first();
         $navbar = Navbar::where('visible','1')->orderBy('id','asc')->get();
         $userdata = Auth::user();
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::with('likes')->get();
         // $posts->user->profile_picture
         // variable -> relation function name -> field
         // dd($posts);
