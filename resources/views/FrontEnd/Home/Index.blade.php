@@ -37,9 +37,33 @@
                                 <li>
                                     <span class="like" data-toggle="tooltip" title="like" data-user-id="{{$userdata->id}}"  data-post-id="{{$post->id}}" onclick="like(this)">
                                         <i class="ti-heart"></i>
-                                        <ins>2.2k</ins>
+                                        <ins>{{$post->likes->count()}}</ins>
                                     </span>
                                 </li>
+
+                                <style>
+                                    @keyframes blink 
+                                    {
+                                        0% { transform: scale(1); }
+                                        50% { transform: scale(2); }
+                                        100% { transform: scale(1); }
+                                    }
+
+                                    .new-animation 
+                                    {
+                                        animation: blink 0.5s ease-in-out;
+                                        /* color: red; */
+                                    }
+                                    .liked
+                                    {
+                                        color: red;
+                                    }
+                                    .liked .ti-heart
+                                    {
+                                        font-weight: bold;
+                                    }
+                                </style>
+
                                 <script>
                                     function like(element)
                                     {
@@ -82,7 +106,40 @@
                                                 },
                                                 success:function(response) 
                                                 {
+
                                                     console.log("like added successfully",response);
+
+                                                    if(response.message == 'Like')
+                                                    {
+
+                                                        var icon = element.querySelector('i');
+                                                        icon.classList.add('new-animation');
+                                                        
+                                                        var likecount = element.querySelector('ins');
+                                                        likecount.innerHTML = parseInt(likecount.innerHTML) +1;
+
+                                                        icon.classList.add('liked');
+
+                                                        setTimeout(function() 
+                                                        {
+                                                            icon.classList.remove('new-animation');    
+                                                        }, 500);
+                                                    }
+                                                    else
+                                                    {
+                                                        var icon = element.querySelector('i');
+                                                        icon.classList.remove('new-animation');
+                                                        
+                                                        var likecount = element.querySelector('ins');
+                                                        likecount.innerHTML = parseInt(likecount.innerHTML) -1;
+
+                                                        icon.classList.remove('liked');
+
+                                                        setTimeout(function() 
+                                                        {
+                                                            icon.classList.remove('new-animation');    
+                                                        }, 500);
+                                                    }
                                                     
                                                 },
                                                 error: function(xhr,status,error)
@@ -95,13 +152,13 @@
 
 
                                 </script>
-                                <li>
+                                {{-- <li>
                                     <span class="dislike" data-toggle="tooltip" title="dislike">
                                         <i class="ti-heart-broken"></i>
                                         <ins>200</ins>
                                     </span>
-                                </li>
-                                <li class="social-media">
+                                </li> --}}
+                                {{-- <li class="social-media">
                                     <div class="menu">
                                         <div class="btn trigger"><i class="fa fa-share-alt"></i></div>
                                         <div class="rotater">
@@ -141,7 +198,7 @@
                                         </div>
 
                                     </div>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                         <div class="description">
