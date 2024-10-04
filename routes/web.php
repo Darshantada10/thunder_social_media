@@ -14,6 +14,8 @@ Route::post('/',[AuthController::class,'AuthUser'])->name('authenticate.user');
 Route::post('/new/user/register',[AuthController::class,'SaveUser']);
 Route::get('/logout',[AuthController::class,'Logout']);
 
+Route::get('/all-users',[CheckController::class,'api']);
+Route::get('/save-user',[CheckController::class,'saveuser']); // now do this using jwt and csrf or auth token in post method
 
 Route::get('/non-authorized',[CheckController::class,'Index']);
 
